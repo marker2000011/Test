@@ -40,12 +40,14 @@ header nav ul {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap; /* Для мобильной версии */
 }
 
 header nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    padding: 5px 10px; /* Для лучшего кликабельности на мобильных */
 }
 
 /* Главная секция */
@@ -83,7 +85,7 @@ header nav ul li a {
 }
 
 .resource-item {
-    flex: 1 1 calc(33.33% - 20px);
+    flex: 1 1 calc(33.33% - 20px); /* По умолчанию 3 колонки */
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 20px;
@@ -127,4 +129,49 @@ footer {
     text-align: center;
     padding: 20px 0;
     margin-top: 50px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    /* Уменьшаем количество колонок до 2 */
+    .resource-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+
+    /* Сворачиваем навигационное меню */
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    header nav ul li a {
+        padding: 10px 20px; /* Более крупные кнопки для удобного тапа */
+    }
+}
+
+/* Адаптивность для очень маленьких экранов (например, смартфоны) */
+@media (max-width: 480px) {
+    /* Уменьшаем количество колонок до 1 */
+    .resource-item {
+        flex: 1 1 100%;
+    }
+
+    /* Уменьшаем размер шрифта */
+    h2 {
+        font-size: 20px;
+    }
+
+    .resource-item h3 {
+        font-size: 16px;
+    }
+
+    .resource-item p {
+        font-size: 12px;
+    }
+
+    .resource-item a {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
 }
